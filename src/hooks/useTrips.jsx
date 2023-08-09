@@ -107,7 +107,7 @@ export function useTrips() {
     getCurrentWeather(city);
     getWeekWeather(city, dates.today, dates.nextWeek);
   }
-
+  console.log(tripStartDate);
   return {
     tripItems: tripItems.sort(
       (a, b) => new Date(a.startDate) - new Date(b.startDate)

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?&family=Roboto:wght@100;300;400;500&display=swap");
 .Home {
   height: 100vh;
   margin: 0;
@@ -9,9 +10,13 @@
 }
 
 .left {
-  flex: 7;
+  width: 70vw;
 }
 
 .right {
-  flex: 3;
+  width: 30vw;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
 }

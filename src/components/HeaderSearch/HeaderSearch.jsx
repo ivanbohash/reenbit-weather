@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { GoogleLogin } from "@react-oauth/google";
 import "./HeaderSearch.css";
 
 export default function HeaderSearch({
@@ -34,11 +35,27 @@ export default function HeaderSearch({
     setIsFromFilterUpdate(false);
   }, [searchValue]);
 
+  useEffect(() => {
+    if (tripItems.length > itemsBeforeSearch.current.length) {
+      itemsBeforeSearch.current = tripItems;
+    }
+  }, [tripItems]);
+
   const debouncedOnFilterChange = debounce(onFilterChange, 500);
   return (
     <div className="header-container">
       <div className="header-logo row1">
         Weather <span className="bolded">Forecast</span>
+        <div style={{ marginTop: 10 }}>
+          <GoogleLogin
+            onSuccess={(credentialResponse) => {
+              console.log(credentialResponse);
+            }}
+            onError={() => {
+              console.log("Login Failed");
+            }}
+          />
+        </div>
       </div>
       <div className="header-input-container">
         <input

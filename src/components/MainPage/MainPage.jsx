@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./MainPage.css";
 import AddNewTrip from "../AddNewTrip/AddNewTrip";
 import TripCard from "../TripCard/TripCard";
 import HeaderSearch from "../HeaderSearch/HeaderSearch";
 import ModalForm from "../ModalForm/ModalForm";
 import WeekForecast from "../WeekForecast/WeekForecast";
-import { useState } from "react";
 
 function MainPage({
   tripItems,
@@ -17,14 +16,16 @@ function MainPage({
   setIsFromFilterUpdate,
 }) {
   const [active, setActive] = useState(false);
-
+  const [clickedTrip, setClickedTrip] = useState();
   return (
     <>
-      <ModalForm
-        active={active}
-        setActive={setActive}
-        addNewTrip={addNewTrip}
-      />
+      {active && (
+        <ModalForm
+          active={active}
+          setActive={setActive}
+          addNewTrip={addNewTrip}
+        />
+      )}
       <div className="main-page-container">
         <div className="flex-container">
           <div className="flex-item header-search">
@@ -38,15 +39,19 @@ function MainPage({
           <div className="flex-item trip-card">
             <div className="column-trip-card">
               {tripItems.map((trip) => (
-                <TripCard
-                  handleWeather={handleWeather}
-                  key={trip.id}
-                  trip={trip}
-                />
+                <span onClick={() => setClickedTrip(trip)}>
+                  <TripCard
+                    className={
+                      clickedTrip === trip
+                        ? "trip-container-selected"
+                        : "trip-container-common"
+                    }
+                    handleWeather={handleWeather}
+                    key={trip.id}
+                    trip={trip}
+                  />
+                </span>
               ))}
-            </div>
-
-            <div className="column-add-trip">
               <AddNewTrip setActive={setActive} />
             </div>
           </div>

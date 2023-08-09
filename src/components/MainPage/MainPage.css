@@ -42,7 +42,7 @@
 
 .column-trip-card {
   text-align: left;
-  width: 1200px;
+  width: 100%;
   overflow-x: auto;
   white-space: nowrap;
 }

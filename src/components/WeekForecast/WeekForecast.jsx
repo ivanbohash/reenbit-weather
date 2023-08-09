@@ -12,7 +12,11 @@ function WeekForecast({ data, loading }) {
           <>
             <p className="day-name">{dayOfWeek}</p>
             <div className="image-container">
-              <img src={require(`../../common/icons/${icon}.png`)} alt={icon} />
+              <img
+                style={{ width: 90 }}
+                src={require(`../../common/icons/${icon}.png`)}
+                alt={icon}
+              />
               <p className="celsius">
                 {tempMax}&deg;/{tempMin}&deg;
               </p>

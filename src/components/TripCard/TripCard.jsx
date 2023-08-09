@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import "./TripCard.css";
 
-function TripCard({ trip, handleWeather }) {
+function TripCard({ trip, handleWeather, className }) {
   const { name, imageUrl, startDate, endDate } = trip;
 
   function formatDate(date) {
@@ -19,7 +19,7 @@ function TripCard({ trip, handleWeather }) {
 
   return (
     <div className="column" onClick={handleTripCardClick}>
-      <div className="trip-container">
+      <div className={`trip-container ${className}`}>
         <img src={imageUrl} alt={name} />
         <div className="trip-info">
           <p className="city-name">{name}</p>
