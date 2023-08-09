@@ -24,13 +24,3 @@ export const TRIP_DEFAULT_STATE = [
     endDate: "2023-08-19",
   },
 ];
-
-export const WEEK_DATA = [
-  { day: "Sunday", maxTemp: "27", minTemp: "18", icon: "clear-day" },
-  { day: "Monday", maxTemp: "27", minTemp: "18", icon: "clear-day" },
-  { day: "Tuesday", maxTemp: "27", minTemp: "18", icon: "clear-day" },
-  { day: "Wednesday", maxTemp: "27", minTemp: "18", icon: "clear-day" },
-  { day: "Thursday", maxTemp: "27", minTemp: "18", icon: "clear-day" },
-  { day: "Friday", maxTemp: "27", minTemp: "18", icon: "clear-day" },
-  { day: "Saturday", maxTemp: "27", minTemp: "18", icon: "clear-day" },
-];

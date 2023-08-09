@@ -36,6 +36,9 @@ function ModalForm({ active, setActive, addNewTrip }) {
 
   function closeModal() {
     setActive(false);
+    setCity("Please select a city");
+    setStartDate("");
+    setEndDate("");
   }
 
   function handleNewTrip() {

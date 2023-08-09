@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { TRIP_DEFAULT_STATE, WEEK_DATA } from "../common/appDefaults";
+import { TRIP_DEFAULT_STATE } from "../common/appDefaults";
 import { API_ENDPOINTS } from "../common/endpoints.js";
 import { getImageUrl } from "../helpers/getImage";
-import { sortByStartDate } from "../helpers/sortByStartDate";
 import { getTodayAndNextWeekDate, getDayOfWeek } from "../helpers/getWeekDates";
 
 const KEY = process.env.REACT_APP_API_KEY;
@@ -12,26 +11,15 @@ export function useTrips() {
   const [tripStartDate, setTripStartDate] = useState(
     TRIP_DEFAULT_STATE[0].startDate
   );
-  const [weekData, setWeekData] = useState(WEEK_DATA);
+  const [weekData, setWeekData] = useState([]);
   const [currentWeather, setCurrentWeather] = useState(null);
   const [weekWeather, setWeekWeather] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const formattedWeatherData = weekWeather?.map((item) => {
-    const date = new Date(item.datetime);
-    const dayOfWeek = getDayOfWeek(date);
-
-    return {
-      dayOfWeek,
-      tempMax: item.tempmax,
-      tempNin: item.tempmin,
-      icon: item.icon,
-    };
-  });
+  const [isFromFilterUpdate, setIsFromFilterUpdate] = useState(false);
 
   useEffect(
     function () {
-      console.log("weekWeather", weekWeather);
       const formattedWeatherData = weekWeather?.map((item) => {
         const date = new Date(item.datetime);
         const dayOfWeek = getDayOfWeek(date);
@@ -51,14 +39,15 @@ export function useTrips() {
   useEffect(function () {
     const storageTrips = JSON.parse(localStorage.getItem("trips"));
 
-    if (storageTrips) setTripItems(sortByStartDate(storageTrips));
+    if (storageTrips) setTripItems(storageTrips);
   }, []);
 
   useEffect(
     function () {
+      if (isFromFilterUpdate) return;
       localStorage.setItem("trips", JSON.stringify([...tripItems]));
     },
-    [tripItems]
+    [tripItems, isFromFilterUpdate]
   );
 
   function addNewTrip(name, startDate, endDate) {
@@ -74,6 +63,13 @@ export function useTrips() {
       },
     ]);
   }
+
+  useEffect(() => {
+    const { name } = TRIP_DEFAULT_STATE[0];
+    const { today, nextWeek } = getTodayAndNextWeekDate();
+    getCurrentWeather(name);
+    getWeekWeather(name, today, nextWeek);
+  }, []);
 
   async function getCurrentWeather(city) {
     setLoading(true);
@@ -104,6 +100,7 @@ export function useTrips() {
       setLoading(false);
     }
   }
+
   function weatherForecast(city, startDate, endDate) {
     const dates = getTodayAndNextWeekDate();
     setTripStartDate(startDate);
@@ -112,7 +109,9 @@ export function useTrips() {
   }
 
   return {
-    tripItems,
+    tripItems: tripItems.sort(
+      (a, b) => new Date(a.startDate) - new Date(b.startDate)
+    ),
     weekData,
     currentWeather,
     weekWeather,
@@ -120,5 +119,7 @@ export function useTrips() {
     addNewTrip,
     loading,
     weatherForecast,
+    setTripItems,
+    setIsFromFilterUpdate,
   };
 }

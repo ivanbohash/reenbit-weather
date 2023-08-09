@@ -6,12 +6,14 @@ import TripDetails from "./components/TripDetails/TripDetails";
 function App() {
   const {
     tripItems,
+    setTripItems,
     addNewTrip,
     weekData,
     weatherForecast,
     tripStartDate,
     currentWeather,
     loading,
+    setIsFromFilterUpdate,
   } = useTrips();
 
   return (
@@ -24,6 +26,9 @@ function App() {
               addNewTrip={addNewTrip}
               handleWeather={weatherForecast}
               weekData={weekData}
+              loading={loading}
+              setTripItems={setTripItems}
+              setIsFromFilterUpdate={setIsFromFilterUpdate}
             />
           </div>
           <div className="split-item right">

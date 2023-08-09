@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import "./TripCard.css";
 
 function TripCard({ trip, handleWeather }) {
@@ -12,9 +13,9 @@ function TripCard({ trip, handleWeather }) {
     return `${day}.${month}.${year}`;
   }
 
-  function handleTripCardClick() {
+  const handleTripCardClick = useCallback(() => {
     handleWeather(name, startDate, endDate);
-  }
+  }, [name, startDate, endDate]);
 
   return (
     <div className="column" onClick={handleTripCardClick}>

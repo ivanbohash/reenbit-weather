@@ -1,3 +1,4 @@
+import React from "react";
 import "./MainPage.css";
 import AddNewTrip from "../AddNewTrip/AddNewTrip";
 import TripCard from "../TripCard/TripCard";
@@ -6,7 +7,15 @@ import ModalForm from "../ModalForm/ModalForm";
 import WeekForecast from "../WeekForecast/WeekForecast";
 import { useState } from "react";
 
-function MainPage({ tripItems, addNewTrip, handleWeather, weekData }) {
+function MainPage({
+  tripItems,
+  addNewTrip,
+  handleWeather,
+  weekData,
+  loading,
+  setTripItems,
+  setIsFromFilterUpdate,
+}) {
   const [active, setActive] = useState(false);
 
   return (
@@ -19,7 +28,11 @@ function MainPage({ tripItems, addNewTrip, handleWeather, weekData }) {
       <div className="main-page-container">
         <div className="flex-container">
           <div className="flex-item header-search">
-            <HeaderSearch />
+            <HeaderSearch
+              setTripItems={setTripItems}
+              tripItems={tripItems}
+              setIsFromFilterUpdate={setIsFromFilterUpdate}
+            />
           </div>
 
           <div className="flex-item trip-card">
@@ -44,8 +57,10 @@ function MainPage({ tripItems, addNewTrip, handleWeather, weekData }) {
 
           <div className="flex-item week-info">
             <div className="columns-container-weather">
-              {weekData.map((data) => (
-                <WeekForecast data={data} key={data.day} />
+              {weekData.map((data, index) => (
+                <React.Fragment key={`${index}${data.day}`}>
+                  <WeekForecast data={data} key={data.day} loading={loading} />
+                </React.Fragment>
               ))}
             </div>
           </div>

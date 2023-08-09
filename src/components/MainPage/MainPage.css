@@ -73,12 +73,15 @@
   margin: 5px 0;
   font-size: 14px;
 }
+
 .day-name {
   padding-top: 0%;
 }
+
 .image-container {
-  height: 90px;
+  height: 80px;
 }
+
 .day-column {
   text-align: center;
   align-items: center;
@@ -87,10 +90,12 @@
   margin-left: auto;
   max-width: 120px;
 }
+
 .weather-container {
   width: 100%;
   text-align: center;
 }
+
 .weather-container img {
   width: 100%;
   margin: auto;

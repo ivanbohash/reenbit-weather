@@ -23,24 +23,3 @@
   font-size: 16px;
   background-color: rgb(236, 246, 255);
 }
-.header-input::-webkit-input-placeholder {
-  color: rgb(50, 50, 50);
-  font-weight: bold;
-}
-.header-input::-moz-placeholder {
-  color: rgb(40, 40, 40);
-  font-weight: bold;
-}
-.header-input:-ms-input-placeholder {
-  color: rgb(40, 40, 40);
-  font-weight: bold;
-}
-
-.header-input:-o-input-placeholder {
-  color: rgb(40, 40, 40);
-  font-weight: bold;
-}
-
-.header-input:focus {
-  outline: none;
-}

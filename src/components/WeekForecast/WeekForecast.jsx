@@ -1,18 +1,24 @@
+import ClipLoader from "react-spinners/ClipLoader";
 import "./WeekForecast.css";
 
-function WeekForecast({ data }) {
+function WeekForecast({ data, loading }) {
   const { dayOfWeek, tempMax, tempMin, icon } = data;
-  console.log("data:", data);
   return (
     <div className="day-column">
       <div className="weather-container">
-        <p className="day-name">{dayOfWeek}</p>
-        <div className="image-container">
-          <img src={require(`../../common/icons/${icon}.png`)} alt={icon} />
-          <p className="celsium">
-            {tempMax}&deg;/{tempMin}&deg;
-          </p>
-        </div>
+        {loading ? (
+          <ClipLoader size={50} color="#000" />
+        ) : (
+          <>
+            <p className="day-name">{dayOfWeek}</p>
+            <div className="image-container">
+              <img src={require(`../../common/icons/${icon}.png`)} alt={icon} />
+              <p className="celsius">
+                {tempMax}&deg;/{tempMin}&deg;
+              </p>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
