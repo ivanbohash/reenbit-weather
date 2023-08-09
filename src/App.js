@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useTrips } from "./hooks/useTrips";
+import MainPage from "./components/MainPage/MainPage";
+import TripDetails from "./components/TripDetails/TripDetails";
 
 function App() {
+  const {
+    tripItems,
+    addNewTrip,
+    weekData,
+    weatherForecast,
+    tripStartDate,
+    currentWeather,
+    loading,
+  } = useTrips();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="Home">
+        <div className="split-container">
+          <div className="split-item left">
+            <MainPage
+              tripItems={tripItems}
+              addNewTrip={addNewTrip}
+              handleWeather={weatherForecast}
+              weekData={weekData}
+            />
+          </div>
+          <div className="split-item right">
+            <TripDetails
+              currentWeather={currentWeather}
+              tripStartDate={tripStartDate}
+              loading={loading}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

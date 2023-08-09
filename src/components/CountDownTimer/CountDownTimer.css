@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+li {
+  display: inline-block;
+  font-size: 1em;
+  list-style-type: none;
+  padding: 1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #fff;
+}
+
+li span {
+  font-weight: 700;
+  display: block;
+  font-size: 3rem;
+}

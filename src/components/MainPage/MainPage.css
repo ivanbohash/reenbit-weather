@@ -1,0 +1,102 @@
+.main-page-container {
+  height: 100%;
+  background-color: white;
+  margin-left: 5%;
+}
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.flex-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.header-search {
+  font-size: x-large;
+  flex: 1;
+  align-self: flex-start;
+}
+
+.trip-card {
+  flex: 3.5;
+  overflow-x: auto;
+  justify-content: flex-start;
+}
+
+.week {
+  flex: 0.5;
+  justify-content: flex-start;
+  font-weight: 500;
+  font-size: large;
+}
+
+.week-info {
+  flex: 2.5;
+  justify-content: flex-start;
+}
+
+.column-trip-card {
+  text-align: left;
+  width: 1200px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.column-add-trip {
+  width: 25%;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.image-square {
+  width: 50%;
+  height: 50%;
+  padding-bottom: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.columns-container-weather {
+  text-align: left;
+  width: 85%;
+  white-space: nowrap;
+  margin-bottom: 5%;
+  margin-right: 0%;
+}
+
+.trip-dates {
+  margin: 5px 0;
+  font-size: 14px;
+}
+.day-name {
+  padding-top: 0%;
+}
+.image-container {
+  height: 90px;
+}
+.day-column {
+  text-align: center;
+  align-items: center;
+  display: inline-block;
+  margin-right: 3%;
+  margin-left: auto;
+  max-width: 120px;
+}
+.weather-container {
+  width: 100%;
+  text-align: center;
+}
+.weather-container img {
+  width: 100%;
+  margin: auto;
+}
+
+.bolded {
+  font-weight: bold;
+  margin-left: 5px;
+}

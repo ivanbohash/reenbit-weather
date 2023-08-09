@@ -1,0 +1,28 @@
+.add-button {
+  display: inline-block;
+  /* padding: 28px; */
+  height: 240px;
+  width: 120px;
+  margin-right: 3%;
+  font-size: 24px;
+  background-color: rgb(236, 246, 255);
+}
+
+.add-btn-content {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(236, 246, 255);
+  color: black;
+  border: none;
+  height: 100%;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.plus-icon {
+  font-size: 32px;
+  margin-bottom: 2%;
+}
